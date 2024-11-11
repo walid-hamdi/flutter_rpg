@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rpg/screens/home/character_card.dart';
 import 'package:flutter_rpg/shared/styled_button.dart';
 import 'package:flutter_rpg/shared/styled_text.dart';
 import 'package:flutter_rpg/theme.dart';
@@ -36,17 +37,9 @@ class _HomeState extends State<Home> {
               child: ListView.builder(
                   itemCount: strings.length,
                   itemBuilder: (_, index) {
-                    return Container(
-                      padding: const EdgeInsets.all(16),
-                      margin: const EdgeInsets.all(16),
-                      color: AppColors.primaryAccent,
-                      child: StyledText(strings[index]),
-                    );
+                    return CharacterCard(character: strings[index]);
                   }),
             ),
-            // const StyledText("Character List"),
-            // const StyledHeading("Character List"),
-            // const StyledTitle("Character List"),
             StyledButton(
               onPressed: () {},
               child: const StyledHeading("Create New"),
