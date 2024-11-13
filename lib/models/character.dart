@@ -6,6 +6,8 @@ class Character with Stats {
   final String slogan;
   bool _isFav = false;
 
+  bool get isFav => _isFav;
+
   Character(this.id, this.name, this.slogan);
 
   void toggleFav() {
