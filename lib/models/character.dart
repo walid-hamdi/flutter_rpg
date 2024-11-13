@@ -1,4 +1,6 @@
-class Character {
+import 'package:flutter_rpg/models/stats.dart';
+
+class Character with Stats {
   final String id;
   final String name;
   final String slogan;
