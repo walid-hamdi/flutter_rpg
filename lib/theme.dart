@@ -48,4 +48,13 @@ ThemeData primaryTheme = ThemeData(
     shadowColor: Colors.transparent,
     margin: const EdgeInsets.only(bottom: 16),
   ),
+  inputDecorationTheme: InputDecorationTheme(
+    filled: true,
+    border: InputBorder.none,
+    prefixIconColor: AppColors.textColor,
+    fillColor: AppColors.secondaryColor.withOpacity(0.5),
+    labelStyle: TextStyle(
+      color: AppColors.textColor,
+    ),
+  ),
 );
