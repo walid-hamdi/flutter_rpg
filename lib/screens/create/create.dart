@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rpg/models/character.dart';
 import 'package:flutter_rpg/models/vocation.dart';
 import 'package:flutter_rpg/screens/create/vocation_card.dart';
+import 'package:flutter_rpg/screens/home/home.dart';
 import 'package:flutter_rpg/shared/styled_button.dart';
 import 'package:flutter_rpg/shared/styled_text.dart';
 import 'package:flutter_rpg/theme.dart';
@@ -52,6 +53,9 @@ class _CreateState extends State<Create> {
     );
 
     debugPrint('LENGTH:${characters.length}');
+
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const Home()));
   }
 
   Vocation selectedVocation = Vocation.junkie;
@@ -90,7 +94,7 @@ class _CreateState extends State<Create> {
                 controller: _nameController,
                 style: GoogleFonts.kanit(
                     textStyle: Theme.of(context).textTheme.bodyMedium),
-                cursorColor: AppColors.secondaryColor,
+                cursorColor: AppColors.primaryAccent,
                 decoration: const InputDecoration(
                   label: StyledText('Character name'),
                   prefixIcon: Icon(
@@ -105,7 +109,7 @@ class _CreateState extends State<Create> {
                 controller: _sloganController,
                 style: GoogleFonts.kanit(
                     textStyle: Theme.of(context).textTheme.bodyMedium),
-                cursorColor: AppColors.secondaryColor,
+                cursorColor: AppColors.primaryAccent,
                 decoration: const InputDecoration(
                   label: StyledText('Character slogan'),
                   prefixIcon: Icon(
