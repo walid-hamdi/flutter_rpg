@@ -41,6 +41,14 @@ class _CreateState extends State<Create> {
         'Name: ${_nameController.text} , slogan ${_sloganController.text}');
   }
 
+  Vocation selectedVocation = Vocation.junkie;
+
+  void _updateVocation(Vocation vocation) {
+    setState(() {
+      selectedVocation = vocation;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -109,17 +117,25 @@ class _CreateState extends State<Create> {
                 height: 30,
               ),
               // vocation cards
-              const VocationCard(
+              VocationCard(
                 vocation: Vocation.junkie,
+                onTap: _updateVocation,
+                selected: selectedVocation == Vocation.junkie,
               ),
-              const VocationCard(
+              VocationCard(
                 vocation: Vocation.ninja,
+                onTap: _updateVocation,
+                selected: selectedVocation == Vocation.ninja,
               ),
-              const VocationCard(
+              VocationCard(
                 vocation: Vocation.wizard,
+                onTap: _updateVocation,
+                selected: selectedVocation == Vocation.wizard,
               ),
-              const VocationCard(
+              VocationCard(
                 vocation: Vocation.raider,
+                onTap: _updateVocation,
+                selected: selectedVocation == Vocation.raider,
               ),
 
               const SizedBox(height: 20),
