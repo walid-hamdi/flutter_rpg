@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_rpg/models/character.dart';
 import 'package:flutter_rpg/models/vocation.dart';
@@ -6,6 +8,7 @@ import 'package:flutter_rpg/shared/styled_button.dart';
 import 'package:flutter_rpg/shared/styled_text.dart';
 import 'package:flutter_rpg/theme.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:uuid/uuid.dart';
 
 class Create extends StatefulWidget {
   Create({super.key});
@@ -39,6 +42,16 @@ class _CreateState extends State<Create> {
 
     debugPrint(
         'Name: ${_nameController.text} , slogan ${_sloganController.text}');
+
+    characters.add(
+      Character(
+          id: const Uuid().v4(),
+          name: _nameController.text,
+          vocation: selectedVocation,
+          slogan: _sloganController.text),
+    );
+
+    debugPrint('LENGTH:${characters.length}');
   }
 
   Vocation selectedVocation = Vocation.junkie;
@@ -138,7 +151,22 @@ class _CreateState extends State<Create> {
                 selected: selectedVocation == Vocation.raider,
               ),
 
-              const SizedBox(height: 20),
+              const SizedBox(
+                height: 30,
+              ),
+              Icon(
+                Icons.code,
+                color: AppColors.primaryColor,
+              ),
+              const Center(
+                child: StyledHeading('Good luck!'),
+              ),
+              const Center(
+                child: StyledText('Enjoy the journey.'),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
               StyledButton(
                 onPressed: _handleSubmit,
                 child: const StyledHeading('create character'),
