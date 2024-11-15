@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_rpg/models/character.dart';
 import 'package:flutter_rpg/models/vocation.dart';
@@ -12,7 +10,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:uuid/uuid.dart';
 
 class Create extends StatefulWidget {
-  Create({super.key});
+  const Create({super.key});
 
   @override
   State<Create> createState() => _CreateState();
@@ -33,11 +31,44 @@ class _CreateState extends State<Create> {
   void _handleSubmit() {
     if (_nameController.text.trim().isEmpty) {
       debugPrint('Please enter the name.');
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              actions: [
+                StyledButton(
+                    child: const StyledHeading('Ok'),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    })
+              ],
+              title: const StyledHeading('Missing a character name.'),
+              content: const StyledText(
+                  'Every good RGB should have a good character name...'),
+              actionsAlignment: MainAxisAlignment.center,
+            );
+          });
       return;
     }
 
     if (_sloganController.text.trim().isEmpty) {
       debugPrint('Please enter the slogan.');
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              actions: [
+                StyledButton(
+                    child: const StyledHeading('Ok'),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    })
+              ],
+              title: const StyledHeading('Missing the slogan.'),
+              content: const StyledText('RGB slogan required...'),
+              actionsAlignment: MainAxisAlignment.center,
+            );
+          });
       return;
     }
 

@@ -33,8 +33,7 @@ class _HomeState extends State<Home> {
             ),
             StyledButton(
               onPressed: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Create()));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>const Create()));
               },
               child: const StyledHeading("Create New"),
             )
