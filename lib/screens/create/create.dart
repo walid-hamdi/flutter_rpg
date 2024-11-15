@@ -3,8 +3,24 @@ import 'package:flutter_rpg/shared/styled_text.dart';
 import 'package:flutter_rpg/theme.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Create extends StatelessWidget {
-  const Create({super.key});
+class Create extends StatefulWidget {
+  Create({super.key});
+
+  @override
+  State<Create> createState() => _CreateState();
+}
+
+class _CreateState extends State<Create> {
+  final _nameController = TextEditingController();
+
+  final _sloganController = TextEditingController();
+
+  @override
+  void dispose() {
+    super.dispose();
+    _nameController.dispose();
+    _sloganController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +46,7 @@ class Create extends StatelessWidget {
               height: 30,
             ),
             TextField(
+              controller: _nameController,
               style: GoogleFonts.kanit(
                   textStyle: Theme.of(context).textTheme.bodyMedium),
               cursorColor: AppColors.secondaryColor,
@@ -44,6 +61,7 @@ class Create extends StatelessWidget {
               height: 10,
             ),
             TextField(
+              controller: _sloganController,
               style: GoogleFonts.kanit(
                   textStyle: Theme.of(context).textTheme.bodyMedium),
               cursorColor: AppColors.secondaryColor,
