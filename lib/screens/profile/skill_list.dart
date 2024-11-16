@@ -15,6 +15,7 @@ class SkillList extends StatefulWidget {
 
 class _SkillListState extends State<SkillList> {
   late List<Skill> skills;
+  late Skill selectedSkill;
 
   @override
   void initState() {
@@ -24,6 +25,11 @@ class _SkillListState extends State<SkillList> {
       skills = allSkills.where((skill) {
         return skill.vocation == widget.character.vocation;
       }).toList();
+
+      if (widget.character.skills.isEmpty) selectedSkill = allSkills[0];
+      if (widget.character.skills.isNotEmpty) {
+        selectedSkill = widget.character.skills.first;
+      }
     });
   }
 
@@ -45,15 +51,33 @@ class _SkillListState extends State<SkillList> {
               return Container(
                 padding: const EdgeInsets.all(2),
                 margin: const EdgeInsets.all(5),
-                child: Image.asset(
-                  'assets/img/skills/${skill.image}',
-                  width: 70,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: selectedSkill == skill
+                        ? Colors.yellow
+                        : Colors.transparent,
+                  ),
+                ),
+                child: Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        widget.character.updateSkills(skill);
+                        selectedSkill = skill;
+                      });
+                    },
+                    child: Image.asset(
+                      'assets/img/skills/${skill.image}',
+                      width: 70,
+                    ),
+                  ),
                 ),
               );
             }).toList()),
             const SizedBox(
               height: 10,
-            )
+            ),
+            StyledText(selectedSkill.name),
           ],
         ),
       ),
