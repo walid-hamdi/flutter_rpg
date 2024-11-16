@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rpg/models/character.dart';
+import 'package:flutter_rpg/screens/profile/stats_table.dart';
 import 'package:flutter_rpg/shared/styled_text.dart';
 import 'package:flutter_rpg/theme.dart';
 
@@ -52,32 +53,41 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
             Padding(
+              padding: const EdgeInsets.all(16),
+              child: Container(
+                width: double.infinity,
                 padding: const EdgeInsets.all(16),
-                child: Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.all(16),
-                  color: AppColors.secondaryColor.withOpacity(0.5),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const StyledHeading('Slogan'),
-                      StyledText(character.slogan),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      const StyledHeading('Weapon of choice'),
-                      StyledText(character.slogan),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      const StyledHeading('Unique Ability'),
-                      StyledText(character.slogan),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                    ],
-                  ),
-                ))
+                color: AppColors.secondaryColor.withOpacity(0.5),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const StyledHeading('Slogan'),
+                    StyledText(character.slogan),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const StyledHeading('Weapon of choice'),
+                    StyledText(character.slogan),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const StyledHeading('Unique Ability'),
+                    StyledText(character.slogan),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  StatsTable(character: character),
+                ],
+              ),
+            )
           ],
         ),
       ),
