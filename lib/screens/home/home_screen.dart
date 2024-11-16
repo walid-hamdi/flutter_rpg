@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rpg/models/character.dart';
-import 'package:flutter_rpg/screens/create/create.dart';
+import 'package:flutter_rpg/screens/create/create_screen.dart';
 import 'package:flutter_rpg/screens/home/character_card.dart';
 import 'package:flutter_rpg/shared/styled_button.dart';
 import 'package:flutter_rpg/shared/styled_text.dart';
 
-class Home extends StatefulWidget {
-  const Home({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  State<Home> createState() => _HomeState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +33,10 @@ class _HomeState extends State<Home> {
             ),
             StyledButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>const Create()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const CreateScreen()));
               },
               child: const StyledHeading("Create New"),
             )

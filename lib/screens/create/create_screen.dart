@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rpg/models/character.dart';
 import 'package:flutter_rpg/models/vocation.dart';
 import 'package:flutter_rpg/screens/create/vocation_card.dart';
-import 'package:flutter_rpg/screens/home/home.dart';
+import 'package:flutter_rpg/screens/home/home_screen.dart';
 import 'package:flutter_rpg/shared/styled_button.dart';
 import 'package:flutter_rpg/shared/styled_text.dart';
 import 'package:flutter_rpg/theme.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:uuid/uuid.dart';
 
-class Create extends StatefulWidget {
-  const Create({super.key});
+class CreateScreen extends StatefulWidget {
+  const CreateScreen({super.key});
 
   @override
-  State<Create> createState() => _CreateState();
+  State<CreateScreen> createState() => _CreateScreenState();
 }
 
-class _CreateState extends State<Create> {
+class _CreateScreenState extends State<CreateScreen> {
   final _nameController = TextEditingController();
 
   final _sloganController = TextEditingController();
@@ -37,7 +37,7 @@ class _CreateState extends State<Create> {
             return AlertDialog(
               actions: [
                 StyledButton(
-                    child: const StyledHeading('Ok'),
+                    child: const StyledHeading('Close'),
                     onPressed: () {
                       Navigator.pop(context);
                     })
@@ -59,7 +59,7 @@ class _CreateState extends State<Create> {
             return AlertDialog(
               actions: [
                 StyledButton(
-                    child: const StyledHeading('Ok'),
+                    child: const StyledHeading('Close'),
                     onPressed: () {
                       Navigator.pop(context);
                     })
@@ -86,7 +86,7 @@ class _CreateState extends State<Create> {
     debugPrint('LENGTH:${characters.length}');
 
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const Home()));
+        context, MaterialPageRoute(builder: (context) => const HomeScreen()));
   }
 
   Vocation selectedVocation = Vocation.junkie;
