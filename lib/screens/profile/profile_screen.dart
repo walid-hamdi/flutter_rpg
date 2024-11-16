@@ -80,13 +80,11 @@ class ProfileScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  StatsTable(character: character),
-                ],
-              ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                StatsTable(character: character),
+              ],
             )
           ],
         ),

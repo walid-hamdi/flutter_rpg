@@ -40,6 +40,60 @@ class _StatsTableState extends State<StatsTable> {
                 StyledHeading(widget.character.points.toString()),
               ],
             ),
+          ),
+          Table(
+            children: widget.character.statsAsFormattedMap.map((stats) {
+              return TableRow(
+                  decoration: BoxDecoration(
+                    color: AppColors.secondaryAccent.withOpacity(0.5),
+                  ),
+                  children: [
+                    TableCell(
+                      verticalAlignment: TableCellVerticalAlignment.middle,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: Text(stats['title']!),
+                      ),
+                    ),
+                    TableCell(
+                      verticalAlignment: TableCellVerticalAlignment.middle,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: Text(stats['value']!),
+                      ),
+                    ),
+                    TableCell(
+                      verticalAlignment: TableCellVerticalAlignment.middle,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              widget.character.increaseStat(stats['title']!);
+                            });
+                          },
+                          icon: const Icon(Icons.arrow_upward),
+                          color: AppColors.textColor,
+                        ),
+                      ),
+                    ),
+                    TableCell(
+                      verticalAlignment: TableCellVerticalAlignment.middle,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              widget.character.decreaseStat(stats['title']!);
+                            });
+                          },
+                          icon: const Icon(Icons.arrow_downward),
+                          color: AppColors.textColor,
+                        ),
+                      ),
+                    ),
+                  ]);
+            }).toList(),
           )
         ],
       ),
