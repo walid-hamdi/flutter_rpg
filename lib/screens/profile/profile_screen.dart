@@ -96,6 +96,7 @@ class ProfileScreen extends StatelessWidget {
                 child: const StyledHeading('Save character'),
                 onPressed: () {
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    padding: const EdgeInsets.all(8),
                     content: const StyledHeading('Character was saved.'),
                     backgroundColor: AppColors.secondaryColor,
                     showCloseIcon: true,

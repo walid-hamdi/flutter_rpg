@@ -48,17 +48,17 @@ class _SkillListState extends State<SkillList> {
             const SizedBox(height: 20),
             Row(
                 children: skills.map((skill) {
-              return Container(
-                padding: const EdgeInsets.all(2),
-                margin: const EdgeInsets.all(5),
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: selectedSkill == skill
-                        ? Colors.yellow
-                        : Colors.transparent,
+              return Expanded(
+                child: Container(
+                  padding: const EdgeInsets.all(2),
+                  margin: const EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: selectedSkill == skill
+                          ? Colors.yellow
+                          : Colors.transparent,
+                    ),
                   ),
-                ),
-                child: Expanded(
                   child: GestureDetector(
                     onTap: () {
                       setState(() {

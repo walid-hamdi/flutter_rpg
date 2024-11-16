@@ -3,10 +3,12 @@ import 'package:flutter_rpg/models/character.dart';
 import 'package:flutter_rpg/models/vocation.dart';
 import 'package:flutter_rpg/screens/create/vocation_card.dart';
 import 'package:flutter_rpg/screens/home/home_screen.dart';
+import 'package:flutter_rpg/services/character_store.dart';
 import 'package:flutter_rpg/shared/styled_button.dart';
 import 'package:flutter_rpg/shared/styled_text.dart';
 import 'package:flutter_rpg/theme.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
 class CreateScreen extends StatefulWidget {
@@ -75,15 +77,13 @@ class _CreateScreenState extends State<CreateScreen> {
     debugPrint(
         'Name: ${_nameController.text} , slogan ${_sloganController.text}');
 
-    characters.add(
+    Provider.of<CharacterStore>(context, listen: false).addCharacter(
       Character(
           id: const Uuid().v4(),
           name: _nameController.text,
           vocation: selectedVocation,
           slogan: _sloganController.text),
     );
-
-    debugPrint('LENGTH:${characters.length}');
 
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => const HomeScreen()));
