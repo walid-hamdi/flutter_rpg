@@ -52,14 +52,14 @@ class _StatsTableState extends State<StatsTable> {
                       verticalAlignment: TableCellVerticalAlignment.middle,
                       child: Padding(
                         padding: const EdgeInsets.all(8),
-                        child: Text(stats['title']!),
+                        child: StyledHeading(stats['title']!),
                       ),
                     ),
                     TableCell(
                       verticalAlignment: TableCellVerticalAlignment.middle,
                       child: Padding(
                         padding: const EdgeInsets.all(8),
-                        child: Text(stats['value']!),
+                        child: StyledHeading(stats['value']!),
                       ),
                     ),
                     TableCell(
