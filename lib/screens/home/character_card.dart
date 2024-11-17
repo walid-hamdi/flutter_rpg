@@ -15,7 +15,7 @@ class CharacterCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         child: Row(
-          children: [
+            children: [
             Image.asset(
               'assets/img/vocations/${character.vocation.image}',
               width: 80,

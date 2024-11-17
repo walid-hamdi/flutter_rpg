@@ -15,4 +15,16 @@ class FirestoreService {
   static Future<QuerySnapshot<Character>> getCharacters() async {
     return await ref.get();
   }
+
+  static updateCharacter(Character character) async {
+    await ref.doc(character.id).update({
+      'stats': character.statsAsMap,
+      'points': character.points,
+      // '': character.name,
+      'isFav': character.isFav,
+      'skills': character.skills.map((skill) => skill.id),
+      // '': character.slogan,
+      // '': character.vocation
+    });
+  }
 }
