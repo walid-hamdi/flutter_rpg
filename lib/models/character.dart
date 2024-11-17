@@ -53,8 +53,10 @@ class Character with Stats {
     );
 
     for (String id in data['skills']) {
-      Skill skill = character.skills.firstWhere((skill) => skill.id == id);
-      character.updateSkills(skill);
+      if (character.skills.isNotEmpty) {
+        Skill skill = character.skills.firstWhere((skill) => skill.id == id);
+        character.updateSkills(skill);
+      }
     }
 
     if (data['isFav'] == true) character.toggleFav();

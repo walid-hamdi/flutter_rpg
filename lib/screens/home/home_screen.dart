@@ -36,7 +36,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 return ListView.builder(
                     itemCount: value.characters.length,
                     itemBuilder: (_, index) {
-                      return CharacterCard(character: value.characters[index]);
+                      return Dismissible(
+                        onDismissed: (_) =>
+                            Provider.of<CharacterStore>(context, listen: false)
+                                .deleteCharacter(value.characters[index]),
+                        key: ValueKey(value.characters[index].id),
+                        child:
+                            CharacterCard(character: value.characters[index]),
+                      );
                     });
               }),
             ),
