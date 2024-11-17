@@ -8,5 +8,7 @@ class FirestoreService {
           fromFirestore: Character.fromFirestore,
           toFirestore: (Character character, _) => character.toFirestore());
 
-          
+  static addCharacter(Character character) async {
+    await ref.doc(character.id).set(character);
+  }
 }
