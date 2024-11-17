@@ -41,14 +41,14 @@ class Character with Stats {
   }
 
   factory Character.fromFirestore(
-      DocumentSnapshot<Map<String, dynamic>> snapshort,
+      DocumentSnapshot<Map<String, dynamic>> snapshot,
       SnapshotOptions? options) {
-    final data = snapshort.data()!;
+    final data = snapshot.data()!;
     Character character = Character(
-      id: data['id'],
+      id: snapshot.id,
       name: data['name'],
       vocation: Vocation.values
-          .firstWhere((vocation) => vocation == data['vocation']),
+          .firstWhere((vocation) => vocation.toString() == data['vocation']),
       slogan: data['slogan'],
     );
 

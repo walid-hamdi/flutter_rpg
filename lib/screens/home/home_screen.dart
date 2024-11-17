@@ -15,10 +15,16 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   @override
+  void initState() {
+    super.initState();
+    Provider.of<CharacterStore>(context, listen: false).fetchCharacters();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const StyledText("Your Character"),
+        title: const StyledHeading("Your Characters"),
         centerTitle: true,
       ),
       body: Container(
