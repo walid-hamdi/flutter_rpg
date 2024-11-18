@@ -11,31 +11,41 @@ class Heart extends StatefulWidget {
   State<Heart> createState() => _HeartState();
 }
 
-class _HeartState extends State<Heart> {
+class _HeartState extends State<Heart> with SingleTickerProviderStateMixin {
   late Animation _animationSize;
   late AnimationController _animationController;
 
   @override
   void initState() {
     super.initState();
-  }
+    _animationController = AnimationController(
+        vsync: this, duration: const Duration(microseconds: 200));
 
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
+    _animationSize = TweenSequence([
+      TweenSequenceItem<double>(tween: Tween(begin: 25, end: 40), weight: 50),
+      TweenSequenceItem<double>(tween: Tween(begin: 40, end: 25), weight: 50),
+    ]).animate(_animationController);
   }
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      icon: const Icon(Icons.favorite),
-      onPressed: () {
-        setState(() {
-          widget.character.toggleFav();
-        });
-      },
-      color: widget.character.isFav ? AppColors.primaryColor : Colors.grey[800],
+    return AnimatedBuilder(
+      animation: _animationController,
+      builder: (context, child) => IconButton(
+        icon: Icon(
+          Icons.favorite,
+          size: _animationSize.value,
+        ),
+        onPressed: () {
+          setState(() {
+            _animationController.reset();
+            _animationController.forward();
+            widget.character.toggleFav();
+          });
+        },
+        color:
+            widget.character.isFav ? AppColors.primaryColor : Colors.grey[800],
+      ),
     );
   }
 }
