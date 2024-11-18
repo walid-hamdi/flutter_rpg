@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rpg/models/character.dart';
+import 'package:flutter_rpg/screens/profile/heart.dart';
 import 'package:flutter_rpg/screens/profile/skill_list.dart';
 import 'package:flutter_rpg/screens/profile/stats_table.dart';
 import 'package:flutter_rpg/services/character_store.dart';
@@ -26,27 +27,36 @@ class ProfileScreen extends StatelessWidget {
               padding: const EdgeInsets.all(8),
               color: AppColors.secondaryAccent,
               width: double.infinity,
-              child: Row(
+              child: Stack(
                 children: [
-                  Hero(
-                    tag: character.id.toString(),
-                    child: Image.asset(
-                      'assets/img/vocations/${character.vocation.image}',
-                      width: 140,
-                      height: 140,
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(
-                      child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  Row(
                     children: [
-                      StyledHeading(character.vocation.title),
-                      StyledText(character.vocation.description)
+                      Hero(
+                        tag: character.id.toString(),
+                        child: Image.asset(
+                          'assets/img/vocations/${character.vocation.image}',
+                          width: 140,
+                          height: 140,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Expanded(
+                          child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          StyledHeading(character.vocation.title),
+                          StyledText(character.vocation.description)
+                        ],
+                      )),
                     ],
-                  )),
+                  ),
+                  Positioned(
+                    right: 5,
+                    top: 5,
+                    child: Heart(character: character),
+                  ),
                 ],
               ),
             ),
